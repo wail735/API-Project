@@ -39,7 +39,7 @@
         </nav>
 
         <!-- Menu mobile -->
-        <div id="mobile-menu" class="hidden absolute top-16 right-0 bg-white w-48 py-4 shadow-lg rounded-lg text-center">
+        <div id="mobile-menu" class="hidden absolute top-16 right-0 bg-white w-48 py-4 shadow-lg rounded-lg text-center z-50">
             <ul class="flex flex-col gap-4 text-lg font-semibold uppercase">
                 <a href="index.html"><li class="cursor-pointer text-gray-700 hover:text-black transition duration-300">Home</li></a>
                 <a href="Prayer.html"><li class="cursor-pointer text-gray-700 hover:text-black transition duration-300">Prayer Time</li></a>
@@ -48,9 +48,9 @@
         </div>
         
         <!-- Contenu principal -->
-        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
-            <h1 class="text-white text-5xl font-bold drop-shadow-lg">Bienvenue sur notre site</h1>
-            <p class="text-white text-xl mt-4 drop-shadow-lg">Découvrez les horaires de prière et bien plus encore</p>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-[90%] md:w-auto">
+            <h1 class="text-white text-3xl md:text-5xl font-bold drop-shadow-lg">Bienvenue sur notre site</h1>
+            <p class="text-white text-lg md:text-xl mt-4 drop-shadow-lg">Découvrez les horaires de prière et bien plus encore</p>
             <a href="Prayer.html" class="mt-6 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition duration-300">
                 En savoir plus
             </a>
@@ -97,10 +97,10 @@
     </div>
     
        <!--Contact section-->
-       <div class="min-h-[16rem] bg-amber-50 p-10 flex flex-col md:flex-row gap-10">
-        <div class="flex-1">
-          <h1 class="text-4xl text-amber-900 font-semibold">Connect with Us</h1>
-          <p class="text-lg text-amber-800 mt-2">
+       <div class="min-h-[16rem] bg-amber-50 p-6 md:p-10 flex flex-col md:flex-row gap-10">
+        <div class="flex-1 text-center md:text-left">
+          <h1 class="text-3xl md:text-4xl text-amber-900 font-semibold">Connect with Us</h1>
+          <p class="text-base md:text-lg text-amber-800 mt-2">
             Reach out to us and discover how you can get involved.
           </p>
         </div>
@@ -123,15 +123,15 @@ md:grid-cols-2 : À partir de la taille md (taille moyenne ≈ 768px), la grille
 
  -->
  <!-- Footer -->
- <div class="footer min-h-[16rem] bg-amber-50 flex justify-around items-center">
+ <div class="footer min-h-[16rem] bg-amber-50 flex flex-col md:flex-row justify-around items-center py-8 gap-8">
     <!-- Section Image + Texte -->
-    <div class="img flex flex-col items-center">
-        <img src="Images/shalat.png" class="w-32 h-32">
-        <p class="text-center mt-2">Praying at its time is better than life and everything in it</p>
+    <div class="img flex flex-col items-center max-w-xs">
+        <img src="Images/shalat.png" class="w-24 h-24 md:w-32 md:h-32">
+        <p class="text-center mt-4 text-sm md:text-base">Praying at its time is better than life and everything in it</p>
     </div>
 
     <!-- Texte des droits d'auteur -->
-    <div class="right text-2xl text-center font-semibold">
+    <div class="right text-xl md:text-2xl text-center font-semibold">
         <p>&copy; 2025 Tous droits réservés</p>
     </div>
 
