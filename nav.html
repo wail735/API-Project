@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav class="absolute top-0 left-0 w-full bg-white/50 backdrop-blur-md py-4 px-8 flex justify-between items-center">
+        <div class="logo">
+            <img src="Images/Capture.PNG" class="w-24 h-24">
+        </div>
+        
+        <!-- Menu Desktop -->
+        <ul class="hidden md:flex gap-8 text-lg font-semibold uppercase">
+            <li class="relative cursor-pointer text-black underline">Home</li>
+            <a href="Prayer.html"><li class="relative cursor-pointer text-gray-700 hover:text-black transition duration-300">Prayer Time</li></a>
+            <li class="relative cursor-pointer text-gray-700 hover:text-black transition duration-300">Contact</li>
+        </ul>
+    
+        <!-- Menu Burger (Mobile) -->
+        <div class="md:hidden">
+            <button id="menu-toggle">
+                <img src="Images/menu (1).png" class="w-8 h-8">
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Menu mobile -->
+    <div id="mobile-menu" class="hidden absolute top-16 right-0 bg-white w-48 py-4 shadow-lg rounded-lg text-center">
+        <ul class="flex flex-col gap-4 text-lg font-semibold uppercase">
+            <li class="cursor-pointer text-gray-700 hover:text-black transition duration-300">Home</li>
+            <li class="cursor-pointer text-gray-700 hover:text-black transition duration-300">Prayer Time</li>
+            <li class="cursor-pointer text-gray-700 hover:text-black transition duration-300">Contact</li>
+        </ul>
+    </div>
+    
+</body>
+</html>

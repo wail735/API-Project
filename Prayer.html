@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="Images/islamic.png">
+
+    <title>مواقيت الصلاة في الجزائر</title>
+</head>
+<body class="relative min-h-screen">
+    <!-- Image en arrière-plan -->
+    <div class="relative">
+        <img src="Images/bbb.jpg" class="w-full h-screen object-cover">
+
+        <!-- Barre de navigation superposée -->
+        <nav class="absolute top-0 left-0 w-full bg-white/50 backdrop-blur-md py-4 px-8 flex justify-between items-center h-44">
+            <div class="logo">
+                <img src="Images/Capture.PNG" class="w-24 h-24">
+            </div>
+            
+            <!-- Menu Desktop -->
+            <ul class="hidden md:flex gap-8 text-lg font-semibold uppercase">
+                <a href="index.html"><li class="relative cursor-pointer text-gray-700">Home</li></a>
+                <a href="Prayer.html"><li class="relative cursor-pointer text-black hover:text-black transition duration-300 underline">Prayer Time</li></a>
+                <a href="contact.html"><li class="relative cursor-pointer text-gray-700 hover:text-black transition duration-300">Contact</li></a>
+            </ul>
+
+            <!-- Menu Burger (Mobile) -->
+            <div class="md:hidden">
+                <button id="menu-toggle">
+                    <img src="Images/menu (1).png" class="w-8 h-8">
+                </button>
+            </div>
+        </nav>
+
+        <!-- Menu mobile (caché par défaut) -->
+        <div id="mobile-menu" class="hidden absolute top-16 right-0 bg-white w-48 py-4 shadow-lg rounded-lg text-center">
+            <ul class="flex flex-col gap-4 text-lg font-semibold uppercase">
+                <li class="cursor-pointer text-gray-700 hover:text-black transition duration-300">Home</li>
+                <li class="cursor-pointer text-gray-700 hover:text-black transition duration-300">Prayer Time</li>
+                <li class="cursor-pointer text-gray-700 hover:text-black transition duration-300">Contact</li>
+            </ul>
+        </div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
+            <h1 class="text-white text-5xl font-bold drop-shadow-lg">Prayer Times</h1>
+            <p class="text-white text-xl mt-4 drop-shadow-lg">Découvrez les horaires de prière et bien plus encore</p>
+            <div class="flex mt-5">
+                <input type="search" id="city-search" name="city" placeholder="Search a city in Algeria" 
+                    class="p-3 border rounded-md flex-grow text-black" aria-label="Search for a city">
+                <button id="search-btn" class="ml-2 p-3 bg-blue-500 rounded-md hover:bg-blue-600">
+                    <img src="Images/search.png" alt="Search" class="w-6 h-6">
+                </button>
+            </div>
+            
+
+        </div>
+        <!--Times-->
+        <div class="relative min-h-[16rem] p-4 bg-amber-950" >
+            <h2 id="date-display" class="text-center text-amber-200 text-2xl font-bold mb-4"></h2>
+            <div class="grid grid-cols-2 text-center text-amber-50 text-3xl font-bold">
+                <h1>Prayer</h1>
+                <h1>Time</h1>
+            </div>
+            <hr class="border-2 border-white my-4">
+            <div class="grid grid-cols-2 gap-4 text-center text-amber-50 text-xl" id="city">
+                <!-- Data will be populated here -->
+            </div>
+        </div>
+<!-- Footer -->
+<div class="footer min-h-[16rem] bg-amber-50 flex justify-around items-center">
+    <!-- Section Image + Texte -->
+    <div class="img flex flex-col items-center">
+        <img src="Images/shalat.png" class="w-32 h-32">
+        <p class="text-center mt-2">Praying at its time is better than life and everything in it</p>
+    </div>
+
+    <!-- Texte des droits d'auteur -->
+    <div class="right text-2xl text-center font-semibold">
+        <p>&copy; 2025 Tous droits réservés</p>
+    </div>
+
+    <!-- Icônes des réseaux sociaux -->
+    <div class="icon flex gap-x-4">
+        <!-- Facebook -->
+        <img src="Images/facebook-app-symbol.png" 
+            class="w-9 h-9 cursor-pointer transition-transform transform hover:scale-110 hover:bg-[#1877F2] p-2 rounded-full">
+        
+        <!-- Twitter -->
+        <img src="Images/twitter.png" 
+            class="w-9 h-9 cursor-pointer transition-transform transform hover:scale-110 hover:bg-[#1DA1F2] p-2 rounded-full">
+        
+        <!-- Instagram -->
+        <img src="Images/instagram.png" 
+            class="w-9 h-9 cursor-pointer transition-transform transform hover:scale-110 hover:bg-gradient-to-r 
+            from-[#feda75] via-[#d62976] to-[#4f5bd5] p-2 rounded-full">
+    </div>
+    
+</div>        
+        
+<script>
+    const searchBtn = document.getElementById("search-btn");
+    const cityInput = document.getElementById("city-search");
+    const timesContainer = document.getElementById("city");
+    const dateDisplay = document.getElementById("date-display");
+
+    function fetchPrayerTimes(city) {
+        // Build URL for Algeria, dynamically taking the city
+        const url = `https://api.aladhan.com/v1/timingsByAddress?address=${encodeURIComponent(city + ', Algeria')}`;
+        
+        timesContainer.innerHTML = '<h1 class="col-span-2">Chargement...</h1>';
+        
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                if(data.code !== 200) {
+                    timesContainer.innerHTML = '<h1 class="col-span-2 text-red-500">Erreur lors de la récupération des données.</h1>';
+                    return;
+                }
+                
+                const timings = data.data.timings;
+                const dateInfo = data.data.date;
+                
+                dateDisplay.innerText = `Date: ${dateInfo.readable} | ${dateInfo.hijri.day} ${dateInfo.hijri.month.ar} ${dateInfo.hijri.year}`;
+                
+                // Prayers we want to show
+                const prayers = [
+                    { name: "Fajr (الفجر)", key: "Fajr" },
+                    { name: "Sunrise (الشروق)", key: "Sunrise" },
+                    { name: "Dhuhr (الظهر)", key: "Dhuhr" },
+                    { name: "Asr (العصر)", key: "Asr" },
+                    { name: "Maghrib (المغرب)", key: "Maghrib" },
+                    { name: "Isha (العشاء)", key: "Isha" }
+                ];
+                
+                timesContainer.innerHTML = '';
+                
+                prayers.forEach(prayer => {
+                    const nameEl = document.createElement("h1");
+                    nameEl.className = "font-semibold";
+                    nameEl.innerText = prayer.name;
+                    
+                    const timeEl = document.createElement("h1");
+                    timeEl.innerText = timings[prayer.key];
+                    
+                    timesContainer.appendChild(nameEl);
+                    timesContainer.appendChild(timeEl);
+                });
+            })
+            .catch(error => {
+                console.error("Error fetching prayer times:", error);
+                timesContainer.innerHTML = '<h1 class="col-span-2 text-red-500">Erreur de connexion API.</h1>';
+            });
+    }
+
+    // Default fetch for Algiers
+    fetchPrayerTimes("Algiers");
+
+    // Search button click
+    searchBtn.addEventListener("click", () => {
+        const city = cityInput.value.trim();
+        if (city) {
+            fetchPrayerTimes(city);
+        }
+    });
+
+    // Press Enter to search
+    cityInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+            const city = cityInput.value.trim();
+            if (city) {
+                fetchPrayerTimes(city);
+            }
+        }
+    });
+</script>
+        
+
+</body>
+</html>

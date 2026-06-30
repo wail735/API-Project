@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="Images/islamic.png">
+    <title>مواقيت الصلاة في الجزائر</title>
+    <style>
+        #mobile-menu {
+            transition: all 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen">
+    <!-- Image en arrière-plan -->
+    <div class="relative">
+        <img src="Images/ChatGPT Image 29 mars 2025, 01_05_36.png" class="w-full h-screen object-cover">
+
+        <!-- Barre de navigation -->
+        <nav class="absolute top-0 left-0 w-full bg-white/50 backdrop-blur-md py-4 px-8 flex justify-between items-center h-44">
+            <div class="logo">
+                <img src="Images/Capture.PNG" class="w-24 h-24">
+            </div>
+            
+            <!-- Menu Desktop -->
+            <ul class="hidden md:flex gap-8 text-lg font-semibold uppercase">
+                <a href="index.html"><li class="relative cursor-pointer text-gray-700 hover:text-black transition duration-300">Home</li></a>
+                <a href="Prayer.html"><li class="relative cursor-pointer text-gray-700 hover:text-black transition duration-300">Prayer Time</li></a>
+                <a href="contact.html"><li class="relative cursor-pointer text-gray-700 hover:text-black transition duration-300 underline">Contact</li></a>
+            </ul>
+
+            <!-- Menu Burger (Mobile) -->
+            <div class="md:hidden">
+                <button id="menu-toggle">
+                    <img src="Images/menu (1).png" class="w-8 h-8">
+                </button>
+            </div>
+        </nav>
+
+        <!-- Menu mobile -->
+        <div id="mobile-menu" class="hidden absolute top-16 right-0 bg-white w-48 py-4 shadow-lg rounded-lg text-center">
+            <ul class="flex flex-col gap-4 text-lg font-semibold uppercase">
+                <a href="index.html"><li class="cursor-pointer text-gray-700 hover:text-black transition duration-300">Home</li></a>
+                <a href="Prayer.html"><li class="cursor-pointer text-gray-700 hover:text-black transition duration-300">Prayer Time</li></a>
+                <a href="contact.html"><li class="cursor-pointer text-gray-700 hover:text-black transition duration-300">Contact</li></a>
+            </ul>
+        </div>
+        
+        <!-- Contenu principal -->
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
+            <h1 class="text-white text-5xl font-bold drop-shadow-lg">Bienvenue sur notre site</h1>
+            <p class="text-white text-xl mt-4 drop-shadow-lg">Découvrez les horaires de prière et bien plus encore</p>
+            <a href="Prayer.html" class="mt-6 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition duration-300">
+                En savoir plus
+            </a>
+        </div>
+    </div>
+
+    <!-- Section Support -->
+    <div class="relative min-h-[16rem] bg-amber-900 w-full p-6">
+        <div class="para flex flex-col md:flex-row justify-around mt-6 text-center md:text-left">
+            <h1 class="text-3xl font-semibold text-amber-50">Soutenez notre mission</h1>
+            <h2 class="text-2xl font-semibold text-amber-50 mt-2 md:mt-0">
+                Votre générosité nous aide à partager des informations utiles à la communauté. Faites un don aujourd’hui.
+            </h2>
+        </div>
+    
+        <div class="icon flex flex-col md:flex-row flex-wrap justify-center md:justify-around mt-10 gap-6">
+            <div class="flex items-center gap-4">
+                <img src="Images/location.png"
+                     class="w-16 h-16 cursor-pointer transition-transform transform hover:scale-110 hover:bg-[#f24b18] p-2 rounded-full">
+                <div class="text-center md:text-left">
+                    <label class="text-2xl font-semibold text-amber-100">Localisation</label>
+                    <p class="text-2xl font-semibold text-amber-100">City 110, bâtiment 8 numéro 16</p>
+                </div>
+            </div>
+    
+            <div class="flex items-center gap-4">
+                <img src="Images/smartphone-call.png"
+                     class="w-16 h-16 cursor-pointer transition-transform transform hover:scale-110 hover:bg-[#184bf2af] p-2 rounded-full">
+                <div class="text-center md:text-left">
+                    <label class="text-2xl font-semibold text-amber-100">Téléphone</label>
+                    <p class="text-2xl font-semibold text-amber-100">+213 5XX XXX XXX</p>
+                </div>
+            </div>
+    
+            <div class="flex items-center gap-4">
+                <img src="Images/email.png"
+                     class="w-16 h-16 cursor-pointer transition-transform transform hover:scale-110 hover:bg-[#f21818] p-2 rounded-full">
+                <div class="text-center md:text-left">
+                    <label class="text-2xl font-semibold text-amber-100">Email</label>
+                    <p class="text-2xl font-semibold text-amber-100">contact@exemple.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+       <!--Contact section-->
+       <div class="min-h-[16rem] bg-amber-50 p-10 flex flex-col md:flex-row gap-10">
+        <div class="flex-1">
+          <h1 class="text-4xl text-amber-900 font-semibold">Connect with Us</h1>
+          <p class="text-lg text-amber-800 mt-2">
+            Reach out to us and discover how you can get involved.
+          </p>
+        </div>
+        <form class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input type="text" placeholder="First name*" class="p-3 border rounded-md">
+          <input type="text" placeholder="Last name*" class="p-3 border rounded-md">
+          <input type="email" placeholder="Email address*" class="p-3 border rounded-md col-span-1">
+          <input type="tel" placeholder="Phone number*" class="p-3 border rounded-md col-span-1">
+          <textarea placeholder="Message*" class="p-3 border rounded-md col-span-2 h-24"></textarea>
+          <button class="bg-amber-900 text-white py-3 px-6 rounded-md hover:bg-amber-800 col-span-2 border-2 border-amber-900">
+            Submit
+          </button>
+        </form>
+        
+      </div>
+      <hr style="border: 2px solid black;">
+<!-- bash creiina hadic l contact form utilisina grid declarina l grid w specifina bali grid-cols-1 : Par défaut (sur les petits écrans), le formulaire aura une seule colonne.
+
+md:grid-cols-2 : À partir de la taille md (taille moyenne ≈ 768px), la grille passera à deux colonnes. mb3d creeina les input tw3na normal
+
+ -->
+ <!-- Footer -->
+ <div class="footer min-h-[16rem] bg-amber-50 flex justify-around items-center">
+    <!-- Section Image + Texte -->
+    <div class="img flex flex-col items-center">
+        <img src="Images/shalat.png" class="w-32 h-32">
+        <p class="text-center mt-2">Praying at its time is better than life and everything in it</p>
+    </div>
+
+    <!-- Texte des droits d'auteur -->
+    <div class="right text-2xl text-center font-semibold">
+        <p>&copy; 2025 Tous droits réservés</p>
+    </div>
+
+    <!-- Icônes des réseaux sociaux -->
+    <div class="icon flex gap-x-4">
+        <!-- Facebook -->
+        <img src="Images/facebook-app-symbol.png" 
+            class="w-9 h-9 cursor-pointer transition-transform transform hover:scale-110 hover:bg-[#1877F2] p-2 rounded-full">
+        
+        <!-- Twitter -->
+        <img src="Images/twitter.png" 
+            class="w-9 h-9 cursor-pointer transition-transform transform hover:scale-110 hover:bg-[#1DA1F2] p-2 rounded-full">
+        
+        <!-- Instagram -->
+        <img src="Images/instagram.png" 
+            class="w-9 h-9 cursor-pointer transition-transform transform hover:scale-110 hover:bg-gradient-to-r 
+            from-[#feda75] via-[#d62976] to-[#4f5bd5] p-2 rounded-full">
+    </div>
+    
+</div>
+      
+    <script>
+        document.getElementById("menu-toggle").addEventListener("click", function() {
+            let mobileMenu = document.getElementById("mobile-menu");
+            mobileMenu.classList.toggle("hidden");
+        });
+    </script>
+</body>
+</html>²
