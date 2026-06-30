@@ -4,11 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="Images/islamic.png">
     <title>مواقيت الصلاة في الجزائر</title>
     <style>
+        body { font-family: 'Outfit', sans-serif; }
         #mobile-menu {
             transition: all 0.3s ease-in-out;
+        }
+        /* Notification style */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #10B981;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 9999px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transform: translateY(150%);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 50;
+        }
+        .notification.show {
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -18,7 +37,7 @@
         <img src="Images/ChatGPT Image 29 mars 2025, 01_05_36.png" class="w-full h-screen object-cover">
 
         <!-- Barre de navigation -->
-        <nav class="absolute top-0 left-0 w-full bg-white/50 backdrop-blur-md py-4 px-8 flex justify-between items-center h-44">
+        <nav class="absolute top-0 left-0 w-full bg-white/70 backdrop-blur-lg shadow-sm py-4 px-8 flex justify-between items-center h-32 md:h-44 z-40 transition-all">
             <div class="logo">
                 <img src="Images/Capture.PNG" class="w-24 h-24">
             </div>
@@ -49,72 +68,78 @@
         
         <!-- Contenu principal -->
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-[90%] md:w-auto">
-            <h1 class="text-white text-3xl md:text-5xl font-bold drop-shadow-lg">Bienvenue sur notre site</h1>
-            <p class="text-white text-lg md:text-xl mt-4 drop-shadow-lg">Découvrez les horaires de prière et bien plus encore</p>
-            <a href="Prayer.html" class="mt-6 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition duration-300">
+            <h1 class="text-white text-4xl md:text-6xl font-bold drop-shadow-2xl">Bienvenue sur notre site</h1>
+            <p class="text-white text-lg md:text-xl mt-6 drop-shadow-xl font-light">Découvrez les horaires de prière et bien plus encore</p>
+            <a href="Prayer.html" class="mt-8 inline-block bg-gradient-to-r from-emerald-600 to-emerald-500 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:shadow-emerald-500/50 hover:-translate-y-1 transition-all duration-300">
                 En savoir plus
             </a>
         </div>
     </div>
 
     <!-- Section Support -->
-    <div class="relative min-h-[16rem] bg-amber-900 w-full p-6">
-        <div class="para flex flex-col md:flex-row justify-around mt-6 text-center md:text-left">
-            <h1 class="text-3xl font-semibold text-amber-50">Soutenez notre mission</h1>
-            <h2 class="text-2xl font-semibold text-amber-50 mt-2 md:mt-0">
-                Votre générosité nous aide à partager des informations utiles à la communauté. Faites un don aujourd’hui.
-            </h2>
+    <div class="relative min-h-[16rem] bg-emerald-900 w-full p-6 py-16">
+        <div class="para flex flex-col md:flex-row justify-center mt-6 text-center max-w-4xl mx-auto">
+            <div>
+                <h1 class="text-3xl md:text-4xl font-bold text-amber-400">Soutenez notre mission</h1>
+                <h2 class="text-lg md:text-xl font-light text-emerald-50 mt-4 leading-relaxed">
+                    Votre générosité nous aide à partager des informations utiles à la communauté. N'hésitez pas à nous contacter.
+                </h2>
+            </div>
         </div>
     
-        <div class="icon flex flex-col md:flex-row flex-wrap justify-center md:justify-around mt-10 gap-6">
-            <div class="flex items-center gap-4">
-                <img src="Images/location.png"
-                     class="w-16 h-16 cursor-pointer transition-transform transform hover:scale-110 hover:bg-[#f24b18] p-2 rounded-full">
-                <div class="text-center md:text-left">
-                    <label class="text-2xl font-semibold text-amber-100">Localisation</label>
-                    <p class="text-2xl font-semibold text-amber-100">City 110, bâtiment 8 numéro 16</p>
+        <div class="icon flex flex-col md:flex-row flex-wrap justify-center md:justify-around mt-16 gap-8 max-w-6xl mx-auto">
+            <div class="flex items-center gap-6 bg-white/10 backdrop-blur-sm p-6 rounded-3xl border border-white/20 shadow-lg hover:-translate-y-2 hover:bg-white/20 transition-all duration-300 flex-1 min-w-[250px]">
+                <div class="bg-gradient-to-br from-amber-400 to-amber-600 p-4 rounded-full shadow-lg">
+                    <img src="Images/location.png" class="w-8 h-8 brightness-0 invert">
+                </div>
+                <div class="text-left">
+                    <label class="text-xl font-semibold text-amber-300 block">Localisation</label>
+                    <p class="text-base font-light text-emerald-50 mt-1">City 110, bâtiment 8 numéro 16</p>
                 </div>
             </div>
     
-            <div class="flex items-center gap-4">
-                <img src="Images/smartphone-call.png"
-                     class="w-16 h-16 cursor-pointer transition-transform transform hover:scale-110 hover:bg-[#184bf2af] p-2 rounded-full">
-                <div class="text-center md:text-left">
-                    <label class="text-2xl font-semibold text-amber-100">Téléphone</label>
-                    <p class="text-2xl font-semibold text-amber-100">+213 5XX XXX XXX</p>
+            <div class="flex items-center gap-6 bg-white/10 backdrop-blur-sm p-6 rounded-3xl border border-white/20 shadow-lg hover:-translate-y-2 hover:bg-white/20 transition-all duration-300 flex-1 min-w-[250px]">
+                <div class="bg-gradient-to-br from-emerald-400 to-emerald-600 p-4 rounded-full shadow-lg">
+                    <img src="Images/smartphone-call.png" class="w-8 h-8 brightness-0 invert">
+                </div>
+                <div class="text-left">
+                    <label class="text-xl font-semibold text-emerald-300 block">Téléphone</label>
+                    <p class="text-base font-light text-emerald-50 mt-1">+213 5XX XXX XXX</p>
                 </div>
             </div>
     
-            <div class="flex items-center gap-4">
-                <img src="Images/email.png"
-                     class="w-16 h-16 cursor-pointer transition-transform transform hover:scale-110 hover:bg-[#f21818] p-2 rounded-full">
-                <div class="text-center md:text-left">
-                    <label class="text-2xl font-semibold text-amber-100">Email</label>
-                    <p class="text-2xl font-semibold text-amber-100">contact@exemple.com</p>
+            <div class="flex items-center gap-6 bg-white/10 backdrop-blur-sm p-6 rounded-3xl border border-white/20 shadow-lg hover:-translate-y-2 hover:bg-white/20 transition-all duration-300 flex-1 min-w-[250px]">
+                <div class="bg-gradient-to-br from-blue-400 to-blue-600 p-4 rounded-full shadow-lg">
+                    <img src="Images/email.png" class="w-8 h-8 brightness-0 invert">
+                </div>
+                <div class="text-left">
+                    <label class="text-xl font-semibold text-blue-300 block">Email</label>
+                    <p class="text-base font-light text-emerald-50 mt-1">contact@exemple.com</p>
                 </div>
             </div>
         </div>
     </div>
     
        <!--Contact section-->
-       <div class="min-h-[16rem] bg-amber-50 p-6 md:p-10 flex flex-col md:flex-row gap-10">
+       <div class="min-h-[16rem] bg-gradient-to-b from-emerald-50 to-white p-8 md:p-16 flex flex-col md:flex-row gap-12 items-center">
         <div class="flex-1 text-center md:text-left">
-          <h1 class="text-3xl md:text-4xl text-amber-900 font-semibold">Connect with Us</h1>
-          <p class="text-base md:text-lg text-amber-800 mt-2">
-            Reach out to us and discover how you can get involved.
+          <h1 class="text-4xl md:text-5xl text-emerald-900 font-bold">Connect with Us</h1>
+          <p class="text-lg md:text-xl text-emerald-700 mt-4 font-light leading-relaxed">
+            Reach out to us and discover how you can get involved. We'd love to hear from you.
           </p>
         </div>
-        <form class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input type="text" placeholder="First name*" class="p-3 border rounded-md">
-          <input type="text" placeholder="Last name*" class="p-3 border rounded-md">
-          <input type="email" placeholder="Email address*" class="p-3 border rounded-md col-span-1">
-          <input type="tel" placeholder="Phone number*" class="p-3 border rounded-md col-span-1">
-          <textarea placeholder="Message*" class="p-3 border rounded-md col-span-2 h-24"></textarea>
-          <button class="bg-amber-900 text-white py-3 px-6 rounded-md hover:bg-amber-800 col-span-2 border-2 border-amber-900">
-            Submit
-          </button>
-        </form>
-        
+        <div class="flex-1 w-full bg-white p-8 rounded-3xl shadow-xl border border-gray-100">
+            <form id="contact-form" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <input type="text" required placeholder="First name*" class="p-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:outline-none transition-all">
+                <input type="text" required placeholder="Last name*" class="p-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:outline-none transition-all">
+                <input type="email" required placeholder="Email address*" class="p-4 bg-gray-50 border border-gray-200 rounded-xl col-span-1 focus:ring-2 focus:ring-emerald-500 focus:outline-none transition-all">
+                <input type="tel" placeholder="Phone number" class="p-4 bg-gray-50 border border-gray-200 rounded-xl col-span-1 focus:ring-2 focus:ring-emerald-500 focus:outline-none transition-all">
+                <textarea required placeholder="Your Message*" class="p-4 bg-gray-50 border border-gray-200 rounded-xl col-span-1 md:col-span-2 h-32 resize-none focus:ring-2 focus:ring-emerald-500 focus:outline-none transition-all"></textarea>
+                <button type="submit" class="bg-gradient-to-r from-emerald-600 to-emerald-500 text-white py-4 px-8 rounded-xl hover:shadow-lg hover:shadow-emerald-500/30 col-span-1 md:col-span-2 font-semibold text-lg transform hover:-translate-y-1 transition-all duration-300">
+                    Send Message
+                </button>
+            </form>
+        </div>
       </div>
       <hr style="border: 2px solid black;">
 <!-- bash creiina hadic l contact form utilisina grid declarina l grid w specifina bali grid-cols-1 : Par défaut (sur les petits écrans), le formulaire aura une seule colonne.
@@ -123,40 +148,67 @@ md:grid-cols-2 : À partir de la taille md (taille moyenne ≈ 768px), la grille
 
  -->
  <!-- Footer -->
- <div class="footer min-h-[16rem] bg-amber-50 flex flex-col md:flex-row justify-around items-center py-8 gap-8">
+<div class="footer min-h-[16rem] bg-slate-900 flex flex-col md:flex-row justify-around items-center py-12 gap-8 text-slate-300 border-t border-slate-800">
     <!-- Section Image + Texte -->
     <div class="img flex flex-col items-center max-w-xs">
-        <img src="Images/shalat.png" class="w-24 h-24 md:w-32 md:h-32">
-        <p class="text-center mt-4 text-sm md:text-base">Praying at its time is better than life and everything in it</p>
+        <div class="bg-white p-3 rounded-full shadow-lg mb-4">
+            <img src="Images/shalat.png" class="w-16 h-16 md:w-20 md:h-20 opacity-90">
+        </div>
+        <p class="text-center text-sm md:text-base font-light text-slate-400">Praying at its time is better than life and everything in it</p>
     </div>
 
     <!-- Texte des droits d'auteur -->
-    <div class="right text-xl md:text-2xl text-center font-semibold">
-        <p>&copy; 2025 Tous droits réservés</p>
+    <div class="right text-lg md:text-xl text-center font-medium">
+        <p>&copy; 2026 Tous droits réservés</p>
     </div>
 
     <!-- Icônes des réseaux sociaux -->
-    <div class="icon flex gap-x-4">
+    <div class="icon flex gap-x-6">
         <!-- Facebook -->
-        <img src="Images/facebook-app-symbol.png" 
-            class="w-9 h-9 cursor-pointer transition-transform transform hover:scale-110 hover:bg-[#1877F2] p-2 rounded-full">
+        <a href="#" target="_blank" class="bg-white/10 p-3 rounded-full hover:bg-[#1877F2] transition-all transform hover:-translate-y-1 hover:shadow-lg">
+            <img src="Images/facebook-app-symbol.png" class="w-6 h-6 brightness-0 invert">
+        </a>
         
         <!-- Twitter -->
-        <img src="Images/twitter.png" 
-            class="w-9 h-9 cursor-pointer transition-transform transform hover:scale-110 hover:bg-[#1DA1F2] p-2 rounded-full">
+        <a href="#" target="_blank" class="bg-white/10 p-3 rounded-full hover:bg-[#1DA1F2] transition-all transform hover:-translate-y-1 hover:shadow-lg">
+            <img src="Images/twitter.png" class="w-6 h-6 brightness-0 invert">
+        </a>
         
         <!-- Instagram -->
-        <img src="Images/instagram.png" 
-            class="w-9 h-9 cursor-pointer transition-transform transform hover:scale-110 hover:bg-gradient-to-r 
-            from-[#feda75] via-[#d62976] to-[#4f5bd5] p-2 rounded-full">
+        <a href="#" target="_blank" class="bg-white/10 p-3 rounded-full hover:bg-gradient-to-tr from-[#feda75] via-[#d62976] to-[#4f5bd5] transition-all transform hover:-translate-y-1 hover:shadow-lg">
+            <img src="Images/instagram.png" class="w-6 h-6 brightness-0 invert">
+        </a>
     </div>
-    
 </div>
       
+    <!-- Notification Element -->
+    <div id="notification" class="notification font-semibold text-lg flex items-center gap-3">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        Message sent successfully!
+    </div>
+
     <script>
         document.getElementById("menu-toggle").addEventListener("click", function() {
             let mobileMenu = document.getElementById("mobile-menu");
             mobileMenu.classList.toggle("hidden");
+        });
+
+        // Intercept form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent page reload
+            const form = this;
+            const notification = document.getElementById('notification');
+            
+            // Show notification
+            notification.classList.add('show');
+            
+            // Hide notification after 3 seconds
+            setTimeout(() => {
+                notification.classList.remove('show');
+                form.reset(); // Reset form fields
+            }, 3000);
         });
     </script>
 </body>

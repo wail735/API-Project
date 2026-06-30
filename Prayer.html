@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="Images/islamic.png">
-
     <title>مواقيت الصلاة في الجزائر</title>
+    <style>
+        body { font-family: 'Outfit', sans-serif; }
+    </style>
 </head>
 <body class="relative min-h-screen">
     <!-- Image en arrière-plan -->
@@ -14,7 +17,7 @@
         <img src="Images/bbb.jpg" class="w-full h-screen object-cover">
 
         <!-- Barre de navigation superposée -->
-        <nav class="absolute top-0 left-0 w-full bg-white/50 backdrop-blur-md py-4 px-8 flex justify-between items-center h-44">
+        <nav class="absolute top-0 left-0 w-full bg-white/70 backdrop-blur-lg shadow-sm py-4 px-8 flex justify-between items-center h-32 md:h-44 z-40 transition-all">
             <div class="logo">
                 <img src="Images/Capture.PNG" class="w-24 h-24">
             </div>
@@ -43,12 +46,12 @@
             </ul>
         </div>
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-[90%] md:w-auto">
-            <h1 class="text-white text-3xl md:text-5xl font-bold drop-shadow-lg">Prayer Times</h1>
-            <p class="text-white text-lg md:text-xl mt-4 drop-shadow-lg">Découvrez les horaires de prière et bien plus encore</p>
-            <div class="flex mt-5 max-w-md mx-auto">
-                <input type="search" id="city-search" name="city" placeholder="Search a city in Algeria" 
-                    class="p-3 border rounded-md flex-grow text-black w-full" aria-label="Search for a city">
-                <button id="search-btn" class="ml-2 p-3 bg-blue-500 rounded-md hover:bg-blue-600 shrink-0">
+            <h1 class="text-white text-4xl md:text-6xl font-bold drop-shadow-2xl">Prayer Times</h1>
+            <p class="text-white text-lg md:text-xl mt-6 drop-shadow-xl font-light">Découvrez les horaires de prière et bien plus encore</p>
+            <div class="flex mt-8 max-w-lg mx-auto">
+                <input type="search" id="city-search" name="city" placeholder="Search a city in Algeria..." 
+                    class="p-4 pl-6 border border-emerald-200 bg-white/90 backdrop-blur-sm rounded-full focus:ring-2 focus:ring-emerald-500 focus:outline-none text-emerald-900 shadow-lg w-full transition-all" aria-label="Search for a city">
+                <button id="search-btn" class="ml-3 p-4 bg-emerald-600 rounded-full hover:bg-emerald-700 shadow-lg hover:shadow-emerald-500/50 hover:-translate-y-1 transition-all shrink-0">
                     <img src="Images/search.png" alt="Search" class="w-6 h-6">
                 </button>
             </div>
@@ -57,44 +60,50 @@
         </div>
     </div>
         <!--Times-->
-        <div class="relative min-h-[16rem] p-4 md:p-8 bg-amber-950" >
-            <h2 id="date-display" class="text-center text-amber-200 text-xl md:text-2xl font-bold mb-4"></h2>
-            <div class="grid grid-cols-2 text-center text-amber-50 text-xl md:text-3xl font-bold max-w-2xl mx-auto">
-                <h1>Prayer</h1>
-                <h1>Time</h1>
-            </div>
-            <hr class="border-2 border-white my-4 max-w-2xl mx-auto">
-            <div class="grid grid-cols-2 gap-4 text-center text-amber-50 text-lg md:text-xl max-w-2xl mx-auto" id="city">
-                <!-- Data will be populated here -->
+        <div class="relative min-h-[16rem] p-4 md:p-16 bg-emerald-900" >
+            <div class="max-w-4xl mx-auto bg-white/10 backdrop-blur-md border border-white/20 p-8 md:p-12 rounded-3xl shadow-2xl">
+                <h2 id="date-display" class="text-center text-amber-300 text-xl md:text-2xl font-semibold mb-8 tracking-wide"></h2>
+                <div class="grid grid-cols-2 text-center text-white text-xl md:text-3xl font-bold max-w-2xl mx-auto uppercase tracking-wider">
+                    <h1>Prayer</h1>
+                    <h1>Time</h1>
+                </div>
+                <hr class="border border-white/30 my-6 max-w-2xl mx-auto">
+                <div class="grid grid-cols-2 gap-y-6 text-center text-white text-lg md:text-2xl font-light max-w-2xl mx-auto" id="city">
+                    <!-- Data will be populated here -->
+                </div>
             </div>
         </div>
  <!-- Footer -->
-<div class="footer min-h-[16rem] bg-amber-50 flex flex-col md:flex-row justify-around items-center py-8 gap-8">
+<div class="footer min-h-[16rem] bg-slate-900 flex flex-col md:flex-row justify-around items-center py-12 gap-8 text-slate-300 border-t border-slate-800">
     <!-- Section Image + Texte -->
     <div class="img flex flex-col items-center max-w-xs">
-        <img src="Images/shalat.png" class="w-24 h-24 md:w-32 md:h-32">
-        <p class="text-center mt-4 text-sm md:text-base">Praying at its time is better than life and everything in it</p>
+        <div class="bg-white p-3 rounded-full shadow-lg mb-4">
+            <img src="Images/shalat.png" class="w-16 h-16 md:w-20 md:h-20 opacity-90">
+        </div>
+        <p class="text-center text-sm md:text-base font-light text-slate-400">Praying at its time is better than life and everything in it</p>
     </div>
 
     <!-- Texte des droits d'auteur -->
-    <div class="right text-xl md:text-2xl text-center font-semibold">
-        <p>&copy; 2025 Tous droits réservés</p>
+    <div class="right text-lg md:text-xl text-center font-medium">
+        <p>&copy; 2026 Tous droits réservés</p>
     </div>
 
     <!-- Icônes des réseaux sociaux -->
-    <div class="icon flex gap-x-4">
+    <div class="icon flex gap-x-6">
         <!-- Facebook -->
-        <img src="Images/facebook-app-symbol.png" 
-            class="w-9 h-9 cursor-pointer transition-transform transform hover:scale-110 hover:bg-[#1877F2] p-2 rounded-full">
+        <a href="#" target="_blank" class="bg-white/10 p-3 rounded-full hover:bg-[#1877F2] transition-all transform hover:-translate-y-1 hover:shadow-lg">
+            <img src="Images/facebook-app-symbol.png" class="w-6 h-6 brightness-0 invert">
+        </a>
         
         <!-- Twitter -->
-        <img src="Images/twitter.png" 
-            class="w-9 h-9 cursor-pointer transition-transform transform hover:scale-110 hover:bg-[#1DA1F2] p-2 rounded-full">
+        <a href="#" target="_blank" class="bg-white/10 p-3 rounded-full hover:bg-[#1DA1F2] transition-all transform hover:-translate-y-1 hover:shadow-lg">
+            <img src="Images/twitter.png" class="w-6 h-6 brightness-0 invert">
+        </a>
         
         <!-- Instagram -->
-        <img src="Images/instagram.png" 
-            class="w-9 h-9 cursor-pointer transition-transform transform hover:scale-110 hover:bg-gradient-to-r 
-            from-[#feda75] via-[#d62976] to-[#4f5bd5] p-2 rounded-full">
+        <a href="#" target="_blank" class="bg-white/10 p-3 rounded-full hover:bg-gradient-to-tr from-[#feda75] via-[#d62976] to-[#4f5bd5] transition-all transform hover:-translate-y-1 hover:shadow-lg">
+            <img src="Images/instagram.png" class="w-6 h-6 brightness-0 invert">
+        </a>
     </div>
     
 </div>        
